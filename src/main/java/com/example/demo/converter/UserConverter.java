@@ -13,13 +13,15 @@ public class UserConverter {
 	
 	public UserDTO UsertoUserDTO (User user) {
 		
-		UserDTO userDTO = new UserDTO();
+		if(user!=null) {
+			UserDTO userDTO = new UserDTO();
+			userDTO.setId_tipo(user.getId_tipo());
+			userDTO.setDescripcion(user.getDescripcion());
+			userDTO.setStatus(user.getStatus());
+			return userDTO;
+		}
 		
-		userDTO.setId_tipo(user.getId_tipo());
-		userDTO.setDescripcion(user.getDescripcion());
-		userDTO.setStatus(user.getStatus());
-		
-		return userDTO;
+		return null;
 	}
 	
 	public User UserDTOtoUser (UserDTO userDTO) {

@@ -28,4 +28,14 @@ public class UserServiceImpl implements UserService {
 		//return (List<UserDTO>) userRepository.findAll();
 	}
 
+	@Override
+	public UserDTO getUserByDescripcion(String descripcion) {
+		return userConverter.UsertoUserDTO(userRepository.getUserByDescripcion(descripcion));
+	}
+
+	@Override
+	public UserDTO findByDescripcion(String descripcion) {
+		return userConverter.UsertoUserDTO(userRepository.findByDescripcion(descripcion));
+	}
+
 }
