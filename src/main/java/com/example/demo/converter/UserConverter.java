@@ -15,9 +15,11 @@ public class UserConverter {
 		
 		if(user!=null) {
 			UserDTO userDTO = new UserDTO();
-			userDTO.setId_tipo(user.getId_tipo());
-			userDTO.setDescripcion(user.getDescripcion());
-			userDTO.setStatus(user.getStatus());
+			userDTO.setId_usuario(user.getId_usuario());
+			userDTO.setNombre(user.getNombre());
+			userDTO.setApellido_paterno(user.getApellido_paterno());
+			userDTO.setRoles(user.getRoles());
+			
 			return userDTO;
 		}
 		
@@ -28,14 +30,18 @@ public class UserConverter {
 		
 		User user = new User();
 		
-		user.setId_tipo(userDTO.getId_tipo());
-		user.setDescripcion(userDTO.getDescripcion());
-		user.setStatus(userDTO.getStatus());
+		user.setId_usuario(userDTO.getId_usuario());
+		user.setNombre(userDTO.getNombre());
+		user.setApellido_paterno(userDTO.getApellido_paterno());
+		
 		
 		return user;
 	}
 	
 	//una lista
+	
+	
+	
 	
 	public List <UserDTO> UserstoUsersDTO (Iterable<User> users){
 		
@@ -43,10 +49,10 @@ public class UserConverter {
 		
 		for(User user:users) {
 			UserDTO userDTO = new UserDTO();
-			userDTO.setId_tipo(user.getId_tipo());
-			userDTO.setDescripcion(user.getDescripcion());
-			userDTO.setStatus(user.getStatus());
-			
+			userDTO.setId_usuario(user.getId_usuario());
+			userDTO.setNombre(user.getNombre());
+			userDTO.setApellido_paterno(user.getApellido_paterno());
+			userDTO.setRoles(user.getRoles());
 			usersDTO.add(userDTO);
 		}
 		
@@ -59,9 +65,10 @@ public class UserConverter {
 		
 		for(UserDTO userDTO:usersDTO) {
 			User user = new User();
-			user.setId_tipo(userDTO.getId_tipo());
-			user.setDescripcion(userDTO.getDescripcion());
-			user.setStatus(userDTO.getStatus());
+			user.setId_usuario(userDTO.getId_usuario());
+			user.setNombre(userDTO.getNombre());
+			user.setApellido_paterno(userDTO.getApellido_paterno());
+			user.setRoles(userDTO.getRoles());
 			
 			users.add(user);
 		}

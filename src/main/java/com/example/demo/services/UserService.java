@@ -5,12 +5,14 @@ import java.util.List;
 import com.example.demo.dto.UserDTO;
 
 
+
+
 public interface UserService {
 	
 	public List<UserDTO> getUsers();
 	
-	public UserDTO  getUserByDescripcion(String descripcion);
+	public UserDTO  getUserByNombre(String nombre);
 	
-	public UserDTO findByDescripcion(String descripcion);
+	public UserDTO findByNombre(String nombre);
 
 }

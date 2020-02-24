@@ -13,14 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.UserDTO;
-import com.example.demo.services.BaseService;
 import com.example.demo.services.UserService;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 	
-	private final static Logger LOG = Logger.getLogger("com.example.controllers.UserController");
+	private final static Logger LOG = Logger.getLogger("com.example.demo.controllers.UserController");
 	
 	
 	@Autowired
@@ -47,13 +46,14 @@ public class UserController {
 	}
 	
 	
+	//nuevo crud
 	
-	@GetMapping("getUserByDescripcion/{descripcion}")
-	public ResponseEntity<?> getUserByDescripcion(@PathVariable String descripcion){
+	@GetMapping("getUserByNombre/{nombre}")
+	public ResponseEntity<?> getUserByNombre(@PathVariable String nombre){
 		
 		Map<String, Object> response = new HashMap<>();
 		
-		UserDTO userDto = userService.getUserByDescripcion(descripcion);
+		UserDTO userDto = userService.getUserByNombre(nombre);
 		
 		if(userDto == null) {
 			response.put("data", "Usuario no existe");
@@ -65,12 +65,12 @@ public class UserController {
 		//return baseService.getHolaMundo();	
 	}
 	
-	@GetMapping("findByDescripcion/{descripcion}")
-	public ResponseEntity<?> findByDescripcion(@PathVariable String descripcion){
+	@GetMapping("findByNombre/{nombre}")
+	public ResponseEntity<?> findByNombre(@PathVariable String nombre){
 		
 		Map<String, Object> response = new HashMap<>();
 		
-		UserDTO userDto = userService.findByDescripcion(descripcion);
+		UserDTO userDto = userService.findByNombre(nombre);
 		
 		if(userDto == null) {
 			response.put("data", "Usuario no existe");

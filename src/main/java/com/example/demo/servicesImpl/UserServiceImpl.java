@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.converter.UserConverter;
 import com.example.demo.dto.UserDTO;
+
 import com.example.demo.repository.UserRepository;
 import java.util.List;
 import com.example.demo.services.UserService;
@@ -29,13 +30,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserDTO getUserByDescripcion(String descripcion) {
-		return userConverter.UsertoUserDTO(userRepository.getUserByDescripcion(descripcion));
+	public UserDTO getUserByNombre(String nombre) {
+		return userConverter.UsertoUserDTO(userRepository.getUserByNombre(nombre));
 	}
 
 	@Override
-	public UserDTO findByDescripcion(String descripcion) {
-		return userConverter.UsertoUserDTO(userRepository.findByDescripcion(descripcion));
+	public UserDTO findByNombre(String nombre) {
+		return userConverter.UsertoUserDTO(userRepository.findByNombre(nombre));
 	}
+
+	
+
 
 }

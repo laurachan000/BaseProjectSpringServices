@@ -1,14 +1,17 @@
 package com.example.demo.models;
 
+import java.util.List;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 @Entity
 @Table(name="usuario")
@@ -17,51 +20,70 @@ public class User {
 	//referencia a cada columna de la tabla
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_tipo;
+	private Long id_usuario;
 	
 	@Column(length=45)
-	private String descripcion;
-	
-	@Column(nullable=false)
-	private Boolean status;
+	private String nombre;
 
 	@Column(length=45)
-	private String password;
+	private String apellido_paterno;
+	
+	@Column(length=45)
+	private String contraseña;
 	
 	
-	//Getters and Setters
+	
+	//roles
+	
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name="usuario_roles", joinColumns= @JoinColumn(name="id_usuario"),
+	inverseJoinColumns=@JoinColumn(name="id_rol"),
+	uniqueConstraints= {@UniqueConstraint(columnNames= {"id_usuario", "id_rol"})})
+	private List<Rol> roles;
+	
+	
 
-	public Long getId_tipo() {
-		return id_tipo;
+	public Long getId_usuario() {
+		return id_usuario;
 	}
 
-	public void setId_tipo(Long id_tipo) {
-		this.id_tipo = id_tipo;
+	public void setId_usuario(Long id_usuario) {
+		this.id_usuario = id_usuario;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-	public Boolean getStatus() {
-		return status;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public void setStatus(Boolean status) {
-		this.status = status;
+	public String getApellido_paterno() {
+		return apellido_paterno;
 	}
 
-	public String getPassword() {
-		return password;
+	public void setApellido_paterno(String apellido_paterno) {
+		this.apellido_paterno = apellido_paterno;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public String getContraseña() {
+		return contraseña;
 	}
 
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
+	}
+
+	public List<Rol> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Rol> roles) {
+		this.roles = roles;
+	}
+	
+	
 	
 	
 
