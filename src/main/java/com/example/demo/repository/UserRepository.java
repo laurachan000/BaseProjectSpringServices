@@ -11,5 +11,7 @@ public interface UserRepository extends CrudRepository<User, Long>{
 	
 	@Query("select user from User user where user.nombre=?1")
 	public User getUserByNombre(String nombre);
+	
+	
 
 }

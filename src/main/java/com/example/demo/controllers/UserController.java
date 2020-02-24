@@ -9,10 +9,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.UserDTO;
+import com.example.demo.models.User;
 import com.example.demo.services.UserService;
 
 @RestController
@@ -81,5 +84,22 @@ public class UserController {
 		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.ACCEPTED);
 		//return baseService.getHolaMundo();	
 	}
+	
+	@PostMapping ( "AgregandoUsuario" )
+    public  ResponseEntity <?>  agregandoUsuario ( @RequestBody User user ) {
+
+        Map < String , Object > response =  new  HashMap <> ();
+        
+        try {
+            this.userService.setUser(user);
+            response.put("Todo bien carnal", "Usuario agregado");
+            return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
+            
+        } catch (Exception e) {
+            response.put("Nel", e.getStackTrace());
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+		
+    }
 
 }
